@@ -86,8 +86,8 @@ header {
 .square {
   border: 2px solid rgb(58, 58, 60);
   display: inline-block;
-  min-width: 57px;
-  min-height: 57px;
+  min-width: 60px;
+  min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,8 +125,8 @@ header {
 
 @media only screen and (max-width: 400px) {
   .square {
-    min-width: 15vw;
-    min-height: 15vw;
+    min-width: 12vw;
+    min-height: 12vw;
   }
 }
 
