@@ -125,8 +125,8 @@ header {
 
 @media only screen and (max-width: 400px) {
   .square {
-    min-width: 12vw;
-    min-height: 12vw;
+    min-width: 13vw;
+    min-height: 13vw;
   }
 }
 
