@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+    <title>Numble</title>
+
+    <script src="numble.js"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
+	
+
+    <link rel="stylesheet" href="numble.css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+		
+  </head>
+  <body>
+  
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+  
+	
+  
+    <div id="container">
+      <div id="game">
+        <header>
+          <i class="far fa-question-circle" id="help"></i>
+          <h1 class="title">Numble</h1>
+          <i class="fas fa-chart-bar" id="stats"></i>
+        </header>
+        <div id="board-container">
+          <h2 id="final-score"></h2>
+          <div id="board"></div>
+        </div>
+
+		<br>
+		
+          
+  
+        <div id="keyboard-container">
+          <div class="keyboard-row">
+            <button class="keyboard-button" data-key="Digit1">1</button>
+            <button class="keyboard-button" data-key="Digit2">2</button>
+            <button class="keyboard-button" data-key="Digit3">3</button>
+            <button class="keyboard-button" data-key="Digit4">4</button>
+            <button class="keyboard-button" data-key="Digit5">5</button>
+            <button class="keyboard-button" data-key="Digit6">6</button>
+            <button class="keyboard-button" data-key="Digit7">7</button>
+            <button class="keyboard-button" data-key="Digit8">8</button>
+            <button class="keyboard-button" data-key="Digit9">9</button>
+			<button class="keyboard-button" data-key="Digit0">0</button>
+          </div>
+
+          <div class="keyboard-row">
+            <button class="keyboard-button" data-key="Enter" class="wide-button">
+              Enter
+            </button>
+			<div class="spacer-seven"></div>
+            <button class="keyboard-button" data-key="Backspace" class="wide-button">
+              ⌫
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="help-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" id="close-help">&times;</span>
+
+          <p>Guess the Numble in 5 tries.</p>
+
+          <p>
+            Each guess must be a 4 digit number. Digits may be repeated. Hit the enter button to
+            submit.
+          </p>
+
+          <p>
+            After each guess, the color of the tiles will change to show how
+            close your guess was to the Numble.
+          </p>
+
+		<ul>
+		  <li>Green: The digit is in the Numble and in the right position. </li>
+		  <li>Yellow: The digit is in the Numble, but is not in the right position. </li>
+		  <li>Black: The digit is not in the Numble. </li>
+		</ul> 
+
+          <p>
+            <b> Note: </b> Repeated digits follow the same color scheme, unless a digit appears more times in the guess than in Numble.
+			      In the latter case, the extra instance(s) of the digit will be black.
+          </p>	
+		
+		<ul>
+		  <li>Case 1: If the Numble is "8864" and the guess is "8128", the tiles will be green-black-black-yellow. </li>
+		  <li>Case 2: If the Numble is "8864" and the guess is "8188", the tiles will be green-black-yellow-black. </li>
+		</ul> 
+
+          <!-- <img src="examples.png" id="examples" /> -->
+
+          <!-- <hr /> -->
+          <!-- <p>A new Numble will be available each day!</p> -->
+        </div>
+      </div>
+
+      <div id="stats-modal" class="modal">
+        
+        <div class="modal-content">
+          <span class="close" id="close-stats">&times;</span>
+
+          <h2>STATISTICS</h2>
+
+		  <h3>  <div id="total"><strong>Played</strong></div>   
+				<!-- <div id="wins"><strong>Wins</strong></div> -->
+				<div id="winpct"><strong>Win %</strong></div>
+				<div id="streak"><strong>Current Streak</strong></div>
+				<div id="max_Streak"><strong>Max Streak</strong></div>
+				</h3>
+				
+		  <h3>  <div id="total-played"></div> 
+				<!-- <div id="total-wins"></div>  -->
+				<div id="win-pct"></div>  
+				<div id="current-streak"></div> 
+				<div id="max-streak"></div>  
+				</h3>
+		  
+		  <div class="chart-container">
+            <canvas id="myChart" width="400" height="300"></canvas>
+		  </div>
+		  
+		  		  
+        </div>
+      </div>
+	  
+	  
+
+	  <div id="win-modal-1" class="modal">
+		  <div class="win-modal-content">
+			<h3> Stunning! </h3>
+		  </div>
+	  </div>
+	  <div id="win-modal-2" class="modal">
+		  <div class="win-modal-content">
+			<h3> Marvellous! </h3>
+		  </div>
+	  </div>
+	  <div id="win-modal-3" class="modal">
+		  <div class="win-modal-content">
+			<h3> Spectacular! </h3>
+		  </div>
+	  </div>
+	  <div id="win-modal-4" class="modal">
+		  <div class="win-modal-content">
+			<h3> Brilliant! </h3>
+		  </div>
+	  </div>
+	  <div id="win-modal-5" class="modal">
+		  <div class="win-modal-content">
+			<h3> Phew! </h3>
+		  </div>
+	  </div>
+  
+  
+  
+  	  <div id="lose-modal" class="modal">
+		  <div class="lose-modal-content">
+			<h3> 
+				<div id="answer"></div>  
+			</h3>
+		  </div>
+	  </div>
+  
+	  	  
+    </div>
+	
+	
+	
+	<script
+	src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	
+  </body>
+</html>
