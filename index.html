@@ -65,14 +65,42 @@
             <button class="keyboard-button" data-key="Digit7">7</button>
             <button class="keyboard-button" data-key="Digit8">8</button>
             <button class="keyboard-button" data-key="Digit9">9</button>
-			<button class="keyboard-button" data-key="Digit0">0</button>
+	    <button class="keyboard-button" data-key="Digit0">0</button>
           </div>
 
           <div class="keyboard-row">
             <button class="keyboard-button" data-key="Enter" class="wide-button">
               Enter
             </button>
-			<div class="spacer-seven"></div>
+<!-- 			<div class="spacer-seven"></div> -->
+
+	    <div class="spacer-two"></div>
+		  
+	    <button id="shareButton">Share</button>
+
+	    <script>
+	        // Replace this URL with the URL you want to share
+	        const shareURL = 'https://example.com/wordle';
+	
+	        // Function to open a share dialog when the button is clicked
+	        document.getElementById('shareButton').addEventListener('click', () => {
+	            if (navigator.share) {
+	                navigator.share({
+	                    title: 'Wordle Game',
+	                    text: 'Can you guess the word?',
+	                    url: shareURL,
+	                })
+	                .then(() => console.log('Shared successfully'))
+	                .catch((error) => console.error('Error sharing:', error));
+	            } else {
+	                // Fallback for browsers that don't support the Web Share API
+	                alert('Web Share API is not supported in your browser. You can manually copy the link.');
+	            }
+	        });
+	    </script>
+		  
+ 	    <div class="spacer-two"></div>
+		  
             <button class="keyboard-button" data-key="Backspace" class="wide-button">
               ⌫
             </button>
