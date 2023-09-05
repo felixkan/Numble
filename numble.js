@@ -401,28 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				$("#stats-modal").fadeOut();
 			}, 1200*10)
 
-		    <button id="shareButton">Share</button>
-
-		    <script>
-			// Replace this URL with the URL you want to share
-			const shareURL = 'https://coolmind.ca/';
-		
-			// Function to open a share dialog when the button is clicked
-			document.getElementById('shareButton').addEventListener('click', () => {
-			    if (navigator.share) {
-				navigator.share({
-				    title: 'Wordle Game',
-				    text: 'Can you guess the word?',
-				    url: shareURL,
-				})
-				.then(() => console.log('Shared successfully'))
-				.catch((error) => console.error('Error sharing:', error));
-			    } else {
-				// Fallback for browsers that don't support the Web Share API
-				alert('Web Share API is not supported in your browser. You can manually copy the link.');
-			    }
-			});
-		    </script>
+		    
 			
 			return;
 			
